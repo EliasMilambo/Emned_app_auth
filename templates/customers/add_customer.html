@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container pt-4">
+    <div class="card shadow-3">
+        <div class="card-header bg-transparent">
+            <h4>{{ title }}</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.company_name }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.contact_person }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">{{ form.email }}</div>
+                    <div class="col-md-6">{{ form.phone }}</div>
+                </div>
+
+                {{ form.address }}
+                
+                <div class="row">
+                    <div class="col-md-4">{{ form.city }}</div>
+                    <div class="col-md-4">{{ form.country }}</div>
+                    <div class="col-md-4">{{ form.status }}</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">{{ form.last_purchase }}</div>
+                </div>
+
+                {{ form.notes }}
+
+                <button type="submit" class="btn btn-primary btn-lg mt-3">
+                    {% if customer %}Update Customer{% else %}Create Customer{% endif %}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

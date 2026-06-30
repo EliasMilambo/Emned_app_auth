@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} Page not found {% endblock %}
+
+{% block content %}
+
+<body data-mdb-theme="dark">
+
+    <div class="text-center px-4">
+
+        <!-- Icône -->
+        <div class="mb-3">
+            <i class="fas fa-satellite-dish fa-4x text-primary opacity-75"></i>
+        </div>
+
+        <!-- Code 404 -->
+        <div class="error-code mb-2">404</div>
+
+        <!-- Titre -->
+        <h2 class="fw-bold mb-2" style="font-size:1.8rem;">Page introuvable</h2>
+
+        <!-- Description -->
+        <p class="text-muted mb-5" style="max-width:420px;margin:0 auto;">
+            La page que vous cherchez n'existe pas ou a été déplacée.<br>
+            Vérifiez l'URL ou retournez à l'accueil.
+        </p>
+
+        <!-- Bouton retour -->
+        <a href="{% url 'index' %}" class="btn btn-primary btn-lg hover-shadow px-5">
+            <i class="fas fa-house me-2"></i> Retour à l'accueil
+        </a>
+
+    </div>
+
+</body>
+
+{% endblock %}

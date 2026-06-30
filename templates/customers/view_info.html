@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+
+            <!-- Carte Profil Client -->
+            <div class="card shadow-sm border-0 rounded-4 bg-white overflow-hidden">
+
+                <!-- En-tête de la fiche avec arrière-plan discret -->
+                <div class="card-header bg-light border-0 py-3 px-4 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary-subtle text-primary p-2 rounded-3 me-3">
+                            <!-- Icône Utilisateur -->
+                            <svg xmlns="http://w3.org" width="24" height="24" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16">
+                                <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5M.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h5 class="card-title mb-0 fw-bold text-dark">Informations Client</h5>
+                            <small class="text-muted">Fiche de suivi de compte</small>
+                        </div>
+                    </div>
+
+                    <!-- Bouton Action (Parfait pour votre flux HTMX) -->
+                    <button class="btn btn-sm btn-outline-primary rounded-pill px-3" hx-get="/customers/{{ customer_info.id }}/edit/" hx-target="#customer-profile-section">
+                        Modifier
+                    </button>
+                </div>
+
+                <!-- Corps de la fiche -->
+                <div class="card-body p-4" id="customer-profile-section">
+                    <div class="row g-4">
+
+                        <!-- Ligne 1 : Nom Complet & Statut -->
+                        <div class="col-sm-6">
+                            <label class="text-muted d-block text-uppercase fw-bold mb-1" style="font-size: 0.75rem; letter-spacing: 0.5px;">Nom complet</label>
+                            <span class="fs-5 fw-semibold text-dark">{{ customer_info.get_full_name }}</span>
+                        </div>
+
+                        <div class="col-sm-6 text-sm-end">
+                            <label class="text-muted d-block text-uppercase fw-bold mb-1" style="font-size: 0.75rem; letter-spacing: 0.5px;">Statut</label>
+                            <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 rounded-pill fw-bold text-uppercase">
+                                {{ customer_info.status }}
+                            </span>
+                        </div>
+
+                        <div class="col-12 my-2">
+                            <hr class="opacity-10">
+                        </div>
+
+                        <!-- Ligne 2 : Email & Téléphone -->
+                        <div class="col-sm-6">
+                            <label class="text-muted d-block text-uppercase fw-bold mb-1" style="font-size: 0.75rem; letter-spacing: 0.5px;">Adresse Email</label>
+                            <a href="mailto:{{ customer_info.email }}" class="text-decoration-none text-dark fw-medium d-inline-flex align-items-center mt-1 link-primary">
+                                <svg xmlns="http://w3.org" width="16" height="16" fill="currentColor" class="bi bi-envelope me-2 text-muted" viewBox="0 0 16 16">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383z"/>
+                                </svg>
+                                {{ customer_info.email }}
+                            </a>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label class="text-muted d-block text-uppercase fw-bold mb-1" style="font-size: 0.75rem; letter-spacing: 0.5px;">Téléphone</label>
+                            <a href="tel:{{ customer_info.telephone }}" class="text-decoration-none text-dark fw-medium d-inline-flex align-items-center mt-1 link-primary">
+                                <svg xmlns="http://w3.org" width="16" height="16" fill="currentColor" class="bi bi-telephone me-2 text-muted" viewBox="0 0 16 16">
+                                    <path d="M3.654 1.328a.678.678 0 0 0-.58-.196L1.005 1.495a.678.678 0 0 0-.547.736A13.5 13.5 0 0 0 13.005 15.5a.678.678 0 0 0 .736-.547l.367-2.07a.68.68 0 0 0-.196-.58L11.306 11.7a.68.68 0 0 0-.634-.027l-1.42 1.42a9.5 9.5 0 0 1-4.387-4.387l1.423-1.42a.68.68 0 0 0 .027-.634z"/>
+                                </svg>
+                                {{ customer_info.telephone }}
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Pied de la fiche (Zone de notes / Tooltips) -->
+                <div class="card-footer bg-light border-0 py-3 px-4">
+                    <p class="text-muted small mb-0 d-flex align-items-center">
+                        <svg xmlns="http://w3.org" width="16" height="16" fill="currentColor" class="bi bi-info-circle me-2 text-primary" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                        </svg>
+                        <span>
+                            Consultez <a href="#" class="text-primary fw-semibold link-underline-opacity-0 link-underline-opacity-100-hover" data-bs-toggle="tooltip" title="Documentation Alpha">ce lien</a>
+                            et <a href="#" class="text-primary fw-semibold link-underline-opacity-0 link-underline-opacity-100-hover" data-bs-toggle="tooltip" title="Historique Beta">cet autre lien</a>.
+                        </span>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Initialisation obligatoire pour les tooltips Bootstrap 5 -->
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
+{% endblock %}

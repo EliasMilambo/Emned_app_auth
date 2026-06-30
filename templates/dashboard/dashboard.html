@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="dashboard container">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <div>
+            <h1 class="mb-1 text-white">Dashboard</h1>
+            <p class="text-muted mb-0">Welcome <span class="fw-bold">{{ user.first_name }} {{ user.last_name }}</span> to your Business Management Platform</p>
+        </div>
+
+        <div class="d-flex gap-3">
+            <button class="btn btn-primary" data-mdb-ripple-init>
+                <i class="fas fa-plus me-2"></i> New Action
+            </button>
+
+            <!-- Logout Button -->
+            <a href="{% url 'logout' %}"
+               class="btn btn-outline-danger"
+               data-mdb-ripple-init>
+                <i class="fas fa-sign-out-alt me-2"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <!-- KPI Cards -->
+    <div class="row mb-5">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="text-muted small">Total Customers</p>
+                            <h3 class="mb-0 text-success">248</h3>
+                        </div>
+                        <i class="fas fa-users fa-2x text-success opacity-75"></i>
+                    </div>
+                    <small class="text-success"><i class="fas fa-arrow-up"></i> +12 this month</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="text-muted small">Products</p>
+                            <h3 class="mb-0">1,284</h3>
+                        </div>
+                        <i class="fas fa-box fa-2x text-primary opacity-75"></i>
+                    </div>
+                    <small class="text-muted">42 out of stock</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="text-muted small">Total Inventory</p>
+                            <h3 class="mb-0">89,450</h3>
+                        </div>
+                        <i class="fas fa-warehouse fa-2x text-warning opacity-75"></i>
+                    </div>
+                    <small class="text-warning"><i class="fas fa-arrow-down"></i> -3%</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <p class="text-muted small">Pending Invoices</p>
+                            <h3 class="mb-0 text-danger">18</h3>
+                        </div>
+                        <i class="fas fa-file-invoice-dollar fa-2x text-danger opacity-75"></i>
+                    </div>
+                    <small class="text-danger">$12,450</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Modules -->
+    <h4 class="mb-4 text-white">Main Management</h4>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-5">
+
+        <div class="col">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 hover-shadow">
+                    <div class="card-body text-center py-5">
+                        <i class="fas fa-users fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Customers Management</h5>
+                        <p class="text-muted">Manage clients, contacts and history</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 hover-shadow">
+                    <div class="card-body text-center py-5">
+                        <i class="fas fa-box fa-3x mb-3 text-success"></i>
+                        <h5 class="card-title">Products Management</h5>
+                        <p class="text-muted">Catalog, pricing and categories</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 hover-shadow">
+                    <div class="card-body text-center py-5">
+                        <i class="fas fa-warehouse fa-3x mb-3 text-warning"></i>
+                        <h5 class="card-title">Inventory Management</h5>
+                        <p class="text-muted">Stock levels and alerts</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 hover-shadow">
+                    <div class="card-body text-center py-5">
+                        <i class="fas fa-truck-loading fa-3x mb-3 text-info"></i>
+                        <h5 class="card-title">Stock Management</h5>
+                        <p class="text-muted">In & Out movements</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col">
+            <a href="#" class="text-decoration-none">
+                <div class="card h-100 hover-shadow">
+                    <div class="card-body text-center py-5">
+                        <i class="fas fa-file-invoice fa-3x mb-3 text-danger"></i>
+                        <h5 class="card-title">Invoice Management</h5>
+                        <p class="text-muted">Create, track and receive payments</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="card shadow-3">
+        <div class="card-header bg-transparent">
+            <h5 class="mb-0">Recent Activities</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Action</th>
+                            <th>Module</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>May 18, 2026</td>
+                            <td>Invoice Created</td>
+                            <td>Invoicing</td>
+                            <td class="fw-bold">$450.00</td>
+                            <td><span class="badge bg-success">Paid</span></td>
+                        </tr>
+                        <!-- Add more rows dynamically later -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

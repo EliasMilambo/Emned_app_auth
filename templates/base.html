@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="author" content="Elias Milambo">
+    <title>My login at dashboard - project</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+
+    <!-- MDB -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+
+  <style>
+        .hover-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3) !important;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+
+<body data-mdb-theme="dark">
+    <div class="m-12">
+         {% block content %}{% endblock %}
+   </div>
+ <!-- MDB JS -->
+    <script type="text/javascript" src="{% static 'js/mdb.umd.min.js' %}"></script>
+
+    <script>
+        // Initialisation MDB (si besoin)
+        document.querySelectorAll('.form-outline').forEach((formOutline) => {
+            new mdb.Input(formOutline).update();
+        });
+    </script>
+</body>
+</html>
