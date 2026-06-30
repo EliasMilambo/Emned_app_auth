@@ -1,0 +1,1 @@
+An authentication process to access a company dashboard, create an account, receive a confirmation email, confirm the registration in the email inbox and come back to log in. If you have already forgotten the password, you can request to recover the password; an email will be sent to you with a link to quickly reset the password.
